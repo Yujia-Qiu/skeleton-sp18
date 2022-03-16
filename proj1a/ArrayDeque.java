@@ -122,5 +122,20 @@ public class ArrayDeque<T> {
         return items[index];
     }
 
+      /*
+    public static void main(String[] args) {
+        ArrayDeque<Integer> aq = new ArrayDeque<Integer>();
+        for (int i = 0; i < 100; i++) {
+            aq.addLast(i);
+        }
+        aq.printDeque();
+        for (int i = 0; i < 98; i++) {
+            aq.removeFirst();
+        }
+        aq.printDeque();
+        System.out.println(aq.get(0));
+    }
+    */
+
 }
 
