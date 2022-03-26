@@ -70,7 +70,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         }
         T res =  rb[first];
         rb[first] = null;
-        if(first == capacity - 1) {
+        if (first == capacity - 1) {
             first = 0;
         } else {
             first++;
