@@ -50,7 +50,7 @@ public class GuitarString  {
         for (int i = 0; i < buffer.capacity(); i++) {
             double oldOne = buffer.dequeue();
             double lastOne = buffer.peek();
-            buffer.enqueue((oldOne + lastOne) / 2 * 0.996);
+            buffer.enqueue((oldOne + lastOne) * DECAY / 2);
 
         }
 

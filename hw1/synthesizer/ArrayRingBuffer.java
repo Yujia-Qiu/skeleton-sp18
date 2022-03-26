@@ -86,21 +86,31 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new ItemIterator();
     }
-    public class KeyIterator implements Iterator<T>{
-        private int wizardPosition;
+    private class ItemIterator implements Iterator<T> {
+        int ptr;
+        int time;
 
-        public KeyIterator() {
-            wizardPosition = 0;
+        ItemIterator() {
+            ptr = first;
+            time = 0;
         }
-        public boolean hasNext(){
-            return wizardPosition < capacity;
+        public boolean hasNext() {
+            if (time < fillCount()) {
+                return true;
+            }
+            return false;
         }
         public T next() {
-            T returnVal = rb[wizardPosition];
-            wizardPosition++;
-            return returnVal;
+            T res = rb[ptr];
+            if (ptr == capacity - 1) {
+                ptr = 0;
+            } else {
+                ptr++;
+            }
+            time++;
+            return res;
         }
     }
 
